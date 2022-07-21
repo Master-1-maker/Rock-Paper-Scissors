@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="Score"> 
+
+      <div class="align"> 
+        <div> You: </div> 
+        <div class="playerScore"> 0 </div>
+      </div>
+    
+      <div class="align">
+        <div> Computer: </div>
+        <div class="computerScore"> 0 </div>
+      </div>
+
+    </div>
+
+    <div class = "result"> 
+       <div class = "Results">
+         <div> result: </div>
+       </div>
+    </div>
+
+    <div class="selections">  
+         <button class="selection" value ="rock"> 🪨  </button>
+         <button class="selection" value ="paper"> 📃 </button>
+         <button class="selection" value ="scissors"> ✂️ </button>   
+    </div>    
+
+    <script>
+
+      const scorePlayer = document.querySelector(".playerScore")
+      const scoreComputer = document.querySelector(".computerScore")
+      const selections = document.querySelectorAll("button")
+      const results = document.querySelector(".Results")
+
+  
+      selections.forEach(selection => { //loops through each button to add evenlistener
+        selection.addEventListener('click', (e) => {
+          playRound(e.target.value)
+        })
+      })
+
+      let playerScore = 0
+      let computerScore = 0
+      let result = ""  
+
+      function computerPlay() {
+        const selections = ["rock", "paper", "scissors"]
+        return selections[Math.floor(Math.random()*selections.length)]; //returns one selection at random
+      }
+
+      function playRound(playerSelection) {
+
+        let computerSelection = computerPlay()
+        
+
+        if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
+           result = ("you win! " + playerSelection + " beats " + computerSelection + "!") 
+           playerScore += 1   
+           setScore()   
+        }
+        if (playerSelection == "scissors" && computerSelection == "rock" || playerSelection == "rock" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "scissors") {
+           result = ("you lose! " + computerSelection + " beats " + playerSelection + "!") 
+           computerScore += 1
+           setScore()
+        }
+        else if (playerSelection == computerSelection) {
+           result = ("its a draw");
+           setScore()
+        }
+           results.innerHTML = result 
+           return
+       }
+
+       function setScore() {  //connect score and result back to html
+        scorePlayer.innerHTML = playerScore; 
+        scoreComputer.innerHTML = computerScore; 
+        results.innerHTML = result;
+      }
+       
+    </script>
+
+</div>
+</body>
+</html>

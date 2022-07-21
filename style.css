@@ -1,0 +1,49 @@
+.result {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.Score {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+
+}
+.playerScore {
+    display: flex;
+    gap: 15px;
+}
+ 
+.computerScore {
+    display: flex;
+    gap: 15px;
+}
+
+.align {
+    display: flex;
+    gap: 10px;
+}
+
+
+.selections {
+   display: flex;
+   justify-content: center;
+   gap: 100px;
+   align-items: center;
+   height: 700px;
+}
+
+.selection {
+    font-size: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 150ms;
+}
+
+.selection:hover {
+    transform: scale(1.2);
+}
+
